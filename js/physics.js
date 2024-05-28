@@ -30,6 +30,10 @@ Physics.prototype.setWorld = function( world )
 
 Physics.prototype.simulate = function()
 {
+	if (!this.world) {
+        console.error("World not set for physics simulation.");
+        return;
+    }
 	var world = this.world;
 	var blocks = world.blocks;
 	

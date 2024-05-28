@@ -42,7 +42,7 @@ if ( world.loadFromFile( "world" ) ) {
 var server = new modules.network.Server( modules.io, 16 );
 server.setWorld( world );
 server.setLogger( log );
-server.setOneUserPerIp( true );
+server.setOneUserPerIp( false );
 log( "Waiting for clients..." );
 
 // Chat commands

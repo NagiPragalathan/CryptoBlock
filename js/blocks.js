@@ -13,7 +13,64 @@ DIRECTION.RIGHT = 4;
 DIRECTION.FORWARD = 5;
 DIRECTION.BACK = 6;
 
-BLOCK = {};
+var BLOCK = {
+    DIRT: {
+        id: 1,
+        texture: function(side) {
+            return { u: 0, v: 0, uw: 16, vh: 16 };
+        },
+        transparent: false
+    },
+    GRASS: {
+        id: 2,
+        texture: function(side) {
+            if (side === 'top') {
+                return { u: 1, v: 0, uw: 16, vh: 16 };
+            } else if (side === 'bottom') {
+                return { u: 2, v: 0, uw: 16, vh: 16 };
+            } else {
+                return { u: 3, v: 0, uw: 16, vh: 16 };
+            }
+        },
+        transparent: false
+    },
+    AIR: {
+        id: 0,
+        transparent: true
+    },
+    // Add more block definitions as needed
+    // ...
+
+    pushVertices: function(vertices, world, lightmap, x, y, z) {
+        var block = world.getBlock(x, y, z);
+        if (!block || !block.texture) {
+            console.error(`Block at ${x}, ${y}, ${z} is missing texture function.`);
+            return;
+        }
+        
+        var sides = ['top', 'bottom', 'left', 'right', 'front', 'back'];
+        for (var side of sides) {
+            var texture = block.texture(side);
+            if (!texture) continue;
+
+            // Calculate vertices based on block and texture data
+            // Example for one side (top side)
+            if (side === 'top') {
+                vertices.push(
+                    x, y, z + 1, texture.u, texture.v, 1, 1, 1, 1,
+                    x + 1, y, z + 1, texture.u + texture.uw, texture.v, 1, 1, 1, 1,
+                    x + 1, y + 1, z + 1, texture.u + texture.uw, texture.v + texture.vh, 1, 1, 1, 1,
+
+                    x + 1, y + 1, z + 1, texture.u + texture.uw, texture.v + texture.vh, 1, 1, 1, 1,
+                    x, y + 1, z + 1, texture.u, texture.v + texture.vh, 1, 1, 1, 1,
+                    x, y, z + 1, texture.u, texture.v, 1, 1, 1, 1
+                );
+            }
+            // Repeat for other sides (bottom, left, right, front, back)
+        }
+    }
+};
+
 
 // Air
 BLOCK.AIR = {

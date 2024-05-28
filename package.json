@@ -1,0 +1,19 @@
+{
+  "name": "webcraft",
+  "version": "1.0.0",
+  "description": "WebCraft (HTML5 Minecraft)\r ---------------------\r [![GitHub issues](https://img.shields.io/github/issues/Overv/WebCraft.svg)](https://github.com/Overv/WebCraft/issues)\r [![GitHub forks](https://img.shields.io/github/forks/Overv/WebCraft.svg)](https://github.com/Overv/WebCraft/network)\r [![GitHub stars](https://img.shields.io/github/stars/Overv/WebCraft.svg)](https://github.com/Overv/WebCraft/stargazers)\r [![GitHub license](https://img.shields.io/github/license/Overv/WebCraft.svg)](https://github.com/Overv/WebCraft/blob/master/LICENSE)\r [![Maintainability](https://api.codeclimate.com/v1/badges/ce6335d88c8072a3f1d3/maintainability)](https://codeclimate.com/github/WarenGonzaga/WebCraft/maintainability)",
+  "main": "newserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "ws": "^8.17.0"
+  }
+}
